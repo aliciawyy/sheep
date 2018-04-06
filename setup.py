@@ -3,10 +3,11 @@ from setuptools import setup
 
 setup(
     name="sheepts",
-    version="0.0.1",
+    version="0.0.2a",
     description="Light Time Series Toolbox",
+    long_description="sheepts is a light time series toolbox.",
     url="https://github.com/aliciawyy/sheep",
-    author=["Alice Wang"],
+    author="Alice Wang",
     author_email="rainingilove@gmail.com",
     license="MIT",
     classifiers=[
