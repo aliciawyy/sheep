@@ -1,19 +1,25 @@
-from os import path, walk
+from functools import wraps
 import pandas as pd
 
 
-class CsvDataHandler(object):
-    _suffix = ".csv"
+def lazy_property(fn):
+    attr_name = '_lazy__' + fn.__name__
 
-    def __init__(self, data_dir):
-        self.data_dir = data_dir
+    @property
+    @wraps(fn)
+    def _lazy_property(self):
+        if not hasattr(self, attr_name):
+            setattr(self, attr_name, fn(self))
+        return getattr(self, attr_name)
+    return _lazy_property
 
-    def get_time_series_data(self, ticker):
-        filename = ticker + self._suffix
-        for dir_path, dir_names, filenames in walk(self.data_dir):
-            if filename in set(filenames):
-                return read_time_series_csv(path.join(dir_path, filename))
 
+class StringMixin(object):
 
-def read_time_series_csv(filename):
-    return pd.read_csv(filename, header=0, parse_dates=True, index_col=0)
+    def __repr__(self):
+        light_dict = dict(self.__dict__)
+        for k, v in self.__dict__.items():
+            if isinstance(v, (list, pd.DataFrame, pd.Series)) and len(v) > 10:
+                light_dict.pop(k)
+        items = ("{}={!r}".format(k, v) for k, v in light_dict.items())
+        return "{}({})".format(self.__class__.__name__, ", ".join(items))
