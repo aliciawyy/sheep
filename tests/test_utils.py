@@ -1,4 +1,4 @@
-from sheep import utils
+from sheepts import utils
 
 
 def test_lazy_property():

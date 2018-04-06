@@ -2,15 +2,14 @@ from setuptools import setup
 
 
 setup(
-    name="sheep",
+    name="sheepts",
     version="0.0.1",
     description="Light Time Series Toolbox",
     url="https://github.com/aliciawyy/sheep",
     author=["Alice Wang"],
     author_email="rainingilove@gmail.com",
-    license="MIT License",
+    license="MIT",
     classifiers=[
-        "Development Status :: 1 - Beta",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.4",
@@ -20,6 +19,6 @@ setup(
         ],
     install_requires=["pandas"],
     keywords="pandas time-series toolbox",
-    packages=["sheep"],
+    packages=["sheepts"],
 )
 
