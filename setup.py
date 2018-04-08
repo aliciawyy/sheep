@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="sheepts",
-    version="0.0.2",
+    version="0.0.3a",
     description="Light Time Series Toolbox",
     long_description="sheepts is a light time series toolbox.",
     url="https://github.com/aliciawyy/sheep",
@@ -13,7 +13,6 @@ setup(
     classifiers=[
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License"
@@ -22,4 +21,3 @@ setup(
     keywords="pandas time-series toolbox",
     packages=["sheepts"],
 )
-
