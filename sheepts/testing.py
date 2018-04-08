@@ -18,6 +18,9 @@ def assert_ts_frame_equal(df, filename, generate_ref=False, precision=10):
 
 
 class TsTestCase(TestCase):
+    assert_pd_series_equal = staticmethod(pdt.assert_series_equal)
+    assert_pd_frame_equal = staticmethod(pdt.assert_frame_equal)
+
     @classmethod
     def setUpClass(cls):
         cls.ref_dir = cls.get_ref_dir()

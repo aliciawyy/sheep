@@ -1,4 +1,7 @@
+import numpy as np
+
 from sheepts import utils
+from .mockutils import MockTsTestCase
 
 
 def test_lazy_property():
@@ -26,3 +29,14 @@ def test_string_mixin_repr():
             self.b = "b"
 
     assert "A(b='b')" == str(A())
+
+
+class ApplyTest(MockTsTestCase):
+    def test_apply_by_multiprocessing(self):
+        df = self.data_handler.get_time_series_data("SPY")
+        df = df.loc["2010", ["Open", "Close", "High", "Low"]]
+        res_no_parallel = df.apply(np.mean, axis=1)
+        res_parallel = utils.apply_by_multiprocessing(
+            df, np.mean, n_cpu=2, axis=1
+        )
+        self.assert_pd_series_equal(res_no_parallel, res_parallel)

@@ -1,4 +1,6 @@
 from functools import wraps
+import numpy as np
+import multiprocessing as mp
 import pandas as pd
 
 
@@ -23,3 +25,18 @@ class StringMixin(object):
                 light_dict.pop(k)
         items = ("{}={!r}".format(k, v) for k, v in light_dict.items())
         return "{}({})".format(self.__class__.__name__, ", ".join(items))
+
+
+def _apply_df(args):
+    df, func, kwargs = args
+    return df.apply(func, **kwargs)
+
+
+def apply_by_multiprocessing(df, func, n_cpu=0, **kwargs):
+    n_cpu = n_cpu or mp.cpu_count()
+    pool = mp.Pool(processes=n_cpu)
+    result = pool.map(
+        _apply_df, [(d, func, kwargs) for d in np.array_split(df, n_cpu)]
+    )
+    pool.close()
+    return pd.concat(list(result))

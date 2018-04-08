@@ -2,18 +2,15 @@ from os import path, remove
 import pandas as pd
 
 from sheepts import testing
+from .mockutils import MockTsTestCase
 
 
-class TsTest(testing.TsTestCase):
+class TsTest(MockTsTestCase):
     def setUp(self):
         self.df = pd.DataFrame(
             0.2, columns=range(2),
             index=pd.date_range("2013-01-17", "2013-01-19")
         )
-
-    @classmethod
-    def get_ref_dir(cls):
-        return path.join(path.dirname(__file__), "ref")
 
     def test_assert_frame_equal(self):
         name = "test_assert_frame_equal"
