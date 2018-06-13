@@ -8,8 +8,8 @@ class MockTsTestCase(TsTestCase):
     @classmethod
     def setUpClass(cls):
         super(MockTsTestCase, cls).setUpClass()
-        data_dir = path.join(path.dirname(__file__), "data")
-        cls.data_handler = CsvDataHandler(data_dir)
+        cls.data_dir = path.join(path.dirname(__file__), "data")
+        cls.data_handler = CsvDataHandler(cls.data_dir)
 
     @classmethod
     def get_ref_dir(cls):

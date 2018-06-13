@@ -1,5 +1,7 @@
 from setuptools import setup
 
+with open("requirements.txt", "r") as f:
+    install_requires = [line.strip() for line in f.readlines()]
 
 setup(
     name="sheepts",
@@ -17,7 +19,10 @@ setup(
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License"
         ],
-    install_requires=["pandas"],
     keywords="pandas time-series toolbox",
     packages=["sheepts"],
+    install_requires=install_requires,
+    extras_require={
+        "test": ["pytest==3.6.1", "pytest-cov==2.5.1"]
+    }
 )
