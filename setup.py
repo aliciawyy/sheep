@@ -5,7 +5,7 @@ with open("requirements.txt", "r") as f:
 
 setup(
     name="sheepts",
-    version="0.0.3a",
+    version="0.0.3",
     description="Light Time Series Toolbox",
     long_description="sheepts is a light time series toolbox.",
     url="https://github.com/aliciawyy/sheep",
