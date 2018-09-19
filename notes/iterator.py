@@ -19,6 +19,9 @@ The iterator interface is designed to be lazy.
 A generator is considered as a lazy implementation as it postpones producing
 values to the last possible moment. This saves memory and may avoid useless
 processing as well.
+
+An iterator traverses a collection and yields items from it. While a generator
+may produce values without necessarily traversing a collection.
 """
 s = "ABC"
 
