@@ -1,11 +1,9 @@
 from setuptools import setup
 
-with open("requirements.txt", "r") as f:
-    install_requires = [line.strip() for line in f.readlines()]
 
 setup(
     name="sheepts",
-    version="0.0.3",
+    version="0.0.4",
     description="Light Time Series Toolbox",
     long_description="sheepts is a light time series toolbox.",
     url="https://github.com/aliciawyy/sheep",
@@ -21,7 +19,10 @@ setup(
         ],
     keywords="pandas time-series toolbox",
     packages=["sheepts"],
-    install_requires=install_requires,
+    install_requires=[
+        "numpy==1.14.5",
+        "pandas==0.23.2"
+    ],
     extras_require={
         "test": ["pytest==3.6.1", "pytest-cov==2.5.1"]
     }
