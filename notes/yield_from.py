@@ -28,6 +28,12 @@ def averager():
 
 
 def grouper(result, key):
+    """
+
+    grouper is a delegating generator that works as a pipe between the client
+    method `main` and the subgenerator `averager`
+
+    """
     while True:
         print("before run grouper with key ->", key, result)
         result[key] = yield from averager()
@@ -49,7 +55,8 @@ def main(data):
         for v in values:
             group.send(v)
         # sending None into group causes the current averager instance to
-        # terminate
+        # terminate. If a subgenerator never terminates, the delegating
+        # generator will suspended forever at the `yield from`.
         print("before sending None for key ->", key)
         group.send(None)  # close the channel
         print("after sending None for key ->", key)
