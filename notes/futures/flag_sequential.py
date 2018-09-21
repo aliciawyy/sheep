@@ -45,7 +45,7 @@ def main(download_many):
     if not os.path.isdir(DEST_DIR):
         os.mkdir(DEST_DIR)
     start_time = time.time()
-    count = download_many(POP20_CC)
+    count = download_many(sorted(POP20_CC))
     print(
         "\nDownloaded {} flags in {}s.".format(count, time.time() - start_time)
     )
