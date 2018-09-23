@@ -3,7 +3,8 @@ The concurrent.futures module provides a high-level interface for
 asynchronously executing callables.
 
 - ThreadPoolExecutor is an Executor subclass that uses a pool of threads
-to execute calls asynchronously.
+to execute calls asynchronously. Python threads are well suited for I/O
+intensive applications.
 - The ProcessPoolExecutor class is an Executor subclass that uses a pool of
 processes to execute calls asynchronously. (for CPU-bound processing)
 
