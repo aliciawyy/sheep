@@ -16,6 +16,7 @@ async def spin(msg):
         flush()
         # move the cursor back with the backspace character \x08
         write('\x08' * len(status))
+        # asyncio.sleep sleeps without blocking the event loop
         await asyncio.sleep(.1)
     write(' ' * len(status) + '\x08' * len(status))
 
@@ -27,6 +28,7 @@ async def slow_function():
 
 async def supervisor():
     print(time.strftime("[%H:%M:%S]"), "supervisor starts...")
+    # When you create a task object, it is already scheduled to run
     spin_task = asyncio.create_task(spin("Thinking"))
     print(spin_task)
     result = await slow_function()
