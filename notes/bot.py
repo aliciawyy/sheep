@@ -44,8 +44,8 @@ class Cutlery:
             self.change(knives, forks)
 
     def give(self, to: "Cutlery", knives=0, forks=0):
-        self.change(-knives, -forks)
-        to.change(knives, forks)
+        self.locked_change(-knives, -forks)
+        to.locked_change(knives, forks)
 
 
 def demo_cutlery():
@@ -93,7 +93,6 @@ def main(n_tables):
     for bot in bots:
         bot.start()
 
-    print("Kitchen ->", KITCHEN)
     print("[main] bot join...")
     for bot in bots:
         bot.join()
