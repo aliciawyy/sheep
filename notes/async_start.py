@@ -19,15 +19,17 @@ async def main_block():
     print(f"{time.ctime()} Goodbye!")
 
 
-async def blocking():
-    await asyncio.sleep(0.5)
+def blocking():
+    time.sleep(0.5)
     print(f"{time.ctime()} Hello from a thread!")
 
 
 async def main():
-    task = asyncio.create_task(blocking())
+    loop = asyncio.get_running_loop()
+    # The function run_in_executor runs a blocking function asynchronously and
+    # returns a Future
+    loop.run_in_executor(None, blocking)
     await main_block()
-    task.cancel()
 
 
 if __name__ == "__main__":
