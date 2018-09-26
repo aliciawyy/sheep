@@ -31,6 +31,8 @@ async def supervisor():
     # When you create a task object, it is already scheduled to run
     spin_task = asyncio.create_task(spin("Thinking"))
     print(spin_task)
+    # The event loop continues to run after we called the slow_function as it
+    # hands the control back with await asyncio.sleep
     result = await slow_function()
     spin_task.cancel()
     print(time.strftime("[%H:%M:%S]"), "supervisor done.")
