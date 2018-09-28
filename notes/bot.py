@@ -34,6 +34,9 @@ class Cutlery:
         # 2. Add the new value knives to the value in that temporary location
         # 3. Copy the total in the temporary location to the original
         # location
+        # This pattern is commonly known as read-modify-put. The same
+        # mechanism is implemented in many other languages as well, for
+        # example Java.
         # The problem with preemptive multitasking is that any thread busy
         # with the steps above can be interrupted at any time
         self.knives += knives
