@@ -20,7 +20,7 @@ setup(
     keywords="pandas time-series toolbox",
     packages=["sheepts"],
     install_requires=[
-        "numpy==1.14.5",
+        "numpy==1.22.0",
         "pandas==0.23.2"
     ],
     extras_require={
